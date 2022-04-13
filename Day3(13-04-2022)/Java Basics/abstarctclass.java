@@ -1,6 +1,6 @@
 package tasks;
 
-public class finalabstarctclass {
+public class abstarctclass {
       public static void main(String args[]) {
     	  t2 task = new t2();
     	  task.sum();    	  
