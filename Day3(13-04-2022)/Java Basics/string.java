@@ -1,6 +1,6 @@
 package tasks;
 
-public class stringbuffer{  
+public class string{  
     public static void main(String[] args){  
         StringBuffer buffer=new StringBuffer("hello");  
         buffer.insert(buffer.length(),"java"); 
