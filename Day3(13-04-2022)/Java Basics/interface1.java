@@ -1,4 +1,4 @@
-package tasks;
+package day_4;
 
 public interface interface1 {
     final int a = 10;
