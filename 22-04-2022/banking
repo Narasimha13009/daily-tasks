@@ -1,0 +1,113 @@
+package problems;
+import java.io.*;
+import java.util.Scanner;
+import java.util.Random;   
+ 
+class Bankaccount
+{
+    String name;
+    int accountnum;
+    String accounttype;
+    double bal;
+     
+    public void assignvalues(String name, String accounttype, double bal)
+    {
+        this.name=name;
+        this.accounttype=accounttype;
+        this.bal=bal;
+         
+        Random random = new Random();
+        this.accountnum=random.nextInt(1000000);
+        System.out.println("Your new account number is: "+accountnum);
+    }
+    public void deposit(double amount)
+    {
+        if(accountnum==0)
+            System.out.println("you dont have account....please craete now");
+        else
+        {
+            bal+=amount;
+            System.out.println("Amount deposited");
+        }
+    }
+    public void withdraw(double amount)
+    {
+        if(accountnum==0)
+            System.out.println("you dont have account....please craete now");
+        else if(bal>amount)
+        {
+            bal-=amount;
+            System.out.println("Amount credited");
+        }
+        else
+            System.out.println("! Insufficient balance");
+    }
+    public void AccountDetails()
+    {
+        if(accountnum==0)
+            System.out.println("you dont have account....please craete now");
+        else
+        {
+            System.out.println("Name :"+name);
+            System.out.println("your account type is :"+accounttype);
+            System.out.println("your Balance: "+bal);
+        }
+    }
+    public void choice()
+    { 
+        System.out.println("\nplease choose one option");
+        System.out.println("1. Create account");
+        System.out.println("2. Deposit amount");
+        System.out.println("3. Withdraw amount");
+        System.out.println("4. balance details");
+        System.out.println("5. Exit");
+    }
+}
+
+
+public class  account
+{
+    public static void main(String[] s)  throws IOException
+    {
+        Bankaccount b1=new Bankaccount();
+         
+        Scanner scan=new Scanner(System.in);
+        int State=0;
+        while(State==0)
+        {
+            b1.choice();
+            int choice=scan.nextInt();
+             
+            if(choice==1)
+            {
+            	
+                System.out.print("Enter your name: ");
+                String name=scan.next();
+                System.out.print("Enter your account type: ");
+                String accounttype=scan.next();
+                System.out.print("Enter your opening balance: ");
+                double  bal=scan.nextDouble();
+                b1.assignvalues(name, accounttype, bal);
+            }
+            else if(choice==2)
+            {
+                System.out.print("Enter amount to deposit: ");
+                b1.deposit(scan.nextDouble());
+            }
+            else if(choice==3)
+            {
+                System.out.print("Enter amount to withdraw: ");
+                b1.withdraw(scan.nextDouble());
+            }
+            else if(choice==4)
+            {
+                b1.AccountDetails();
+            }
+            else if(choice==5)
+            {
+            	State = 1;
+                System.out.println("Thank you");
+            }
+        }
+    }
+}
